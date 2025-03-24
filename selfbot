@@ -1,0 +1,23 @@
+import discord
+from discord.ext import commands
+import asyncio
+
+Intents = discord.Intents.default
+
+TOKEN = " discord token here "
+
+selfbot = commands.Bot(command_prefix=".", self_bot=True, Intents=Intents)
+
+@selfbot.event
+async def on_ready():
+    print(f"logged on as {selfbot.user}")
+
+@selfbot.command()
+async def hello(ctx):
+    await ctx.send("hello im a selfbot!")
+
+@selfbot.command()
+async def ping(ctx):
+    await ctx.send("pong!")
+
+selfbot.run(TOKEN, bot=False)
